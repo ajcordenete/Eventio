@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = EventDB.EVENT_TABLE_NAME)
 data class EventDB(
     @PrimaryKey
-    val id: Long,
+    val uid: String,
 
     @ColumnInfo(name = "name")
     val name: String? = "",

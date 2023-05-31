@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/fragmentHome"
-        android:name="com.ajcordenete.eventio.home.FragmentHome"
+        android:name="com.ajcordenete.eventio.feature.home.FragmentHome"
         android:label="Home"/>
 </navigation>
