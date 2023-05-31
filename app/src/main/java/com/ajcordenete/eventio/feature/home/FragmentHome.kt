@@ -55,6 +55,16 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
             .launchIn(lifecycleScope)
 
         binding
+            .labelViewAll
+            .ninjaTap {
+                navigate(
+                    FragmentHomeDirections
+                        .actionFragmentHomeToListFragment()
+                )
+            }
+            .launchIn(lifecycleScope)
+
+        binding
             .listEvents
             .adapter = eventAdapter
     }
