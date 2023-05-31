@@ -21,5 +21,4 @@ class EventLocalSourceImpl @Inject constructor(
             Result.failure(e)
         }
     }
-
 }

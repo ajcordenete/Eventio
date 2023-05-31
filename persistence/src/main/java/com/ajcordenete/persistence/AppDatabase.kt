@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.ajcordenete.persistence.features.event.dao.EventDao
 import com.ajcordenete.persistence.features.user.dao.UserDao
 import com.ajcordenete.persistence.features.user.models.UserDB
 import net.sqlcipher.database.SQLiteDatabase
@@ -19,6 +20,8 @@ import net.sqlcipher.database.SupportFactory
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun userDao(): UserDao
+
+    abstract fun eventDao(): EventDao
 
     companion object {
         @Volatile
