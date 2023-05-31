@@ -37,7 +37,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(":domain")
     implementation project(':persistence')
-    implementation project(":network")
 
     //Hilt
     implementation Libs.hiltAndroid
