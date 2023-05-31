@@ -1,9 +1,8 @@
 package com.ajcordenete.data
 
-import com.ajcordenete.data.feature.user.UserRepository
-import com.ajcordenete.data.feature.user.UserRepositoryImpl
-import com.ajcordenete.persistence.features.user.UserLocalSource
-import com.ajcordenete.network.feature.user.UserRemoteSource
+import com.ajcordenete.data.feature.event.EventRepository
+import com.ajcordenete.data.feature.event.EventRepositoryImpl
+import com.ajcordenete.persistence.features.event.EventLocalSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,13 +15,9 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesUserRepository(
-        userRemoteSource: UserRemoteSource,
-        userLocalSource: UserLocalSource
-    ): UserRepository {
-        return UserRepositoryImpl(
-            userRemoteSource,
-            userLocalSource
-        )
+    fun providesEventRepository(
+        eventLocalSource: EventLocalSource
+    ): EventRepository {
+        return EventRepositoryImpl(eventLocalSource)
     }
 }

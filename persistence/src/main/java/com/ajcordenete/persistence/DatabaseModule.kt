@@ -1,8 +1,8 @@
 package com.ajcordenete.persistence
 
 import android.app.Application
-import com.ajcordenete.persistence.features.user.UserLocalSource
-import com.ajcordenete.persistence.features.user.UserLocalSourceImpl
+import com.ajcordenete.persistence.features.event.EventLocalSource
+import com.ajcordenete.persistence.features.event.EventLocalSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +21,7 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun providesUserLocalSource(appDatabase: AppDatabase): UserLocalSource {
-        return UserLocalSourceImpl(appDatabase.userDao())
+    fun providesEventLocalSource(appDatabase: AppDatabase): EventLocalSource {
+        return EventLocalSourceImpl(appDatabase.eventDao())
     }
 }
