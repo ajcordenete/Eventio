@@ -24,7 +24,7 @@
                 style="@style/Styles.Text.Body.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.name}"
+                android:text= "@{@string/button_pressed(item.name)}"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Button 1 pressed"/>
 

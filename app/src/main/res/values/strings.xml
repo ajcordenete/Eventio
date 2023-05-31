@@ -7,6 +7,9 @@
     <string name="your_events">Your events</string>
     <string name="view_all">View all</string>
 
+    <!-- List -->
+    <string name="button_pressed">%1$s pressed</string>
+
     <!-- Action Page -->
     <string name="select_an_event">Select an event</string>
     <string name="event_saved">Event successfully saved</string>
