@@ -1,5 +1,6 @@
 package com.ajcordenete.eventio.feature.list.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.ajcordenete.core.base.BaseListAdapter
