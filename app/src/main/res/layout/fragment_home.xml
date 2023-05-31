@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,10 +12,56 @@
             layout="@layout/include_top_appbar_main_large" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgDashboard"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/grid_0"
+            app:layout_constraintHeight_percent="0.35"
+            android:src="@drawable/circular"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtEventCount"
+            style="@style/Styles.Text.Subheadline.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_to_record_an_event"
+            app:layout_constraintTop_toTopOf="@id/imgDashboard"
+            app:layout_constraintBottom_toBottomOf="@id/imgDashboard"
+            app:layout_constraintStart_toStartOf="@id/imgDashboard"
+            app:layout_constraintEnd_toEndOf="@id/imgDashboard"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/labelEventCount"
+            style="@style/Styles.Text.Footnote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_events"
+            app:layout_constraintTop_toBottomOf="@id/txtEventCount"
+            app:layout_constraintStart_toStartOf="@id/imgDashboard"
+            app:layout_constraintEnd_toEndOf="@id/imgDashboard"
+            android:layout_marginTop="@dimen/grid_4"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/labelEventHeader"
+            style="@style/Styles.Text.Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_events"
+            app:layout_constraintTop_toBottomOf="@id/imgDashboard"
+            app:layout_constraintStart_toStartOf="@id/imgDashboard"
+            android:layout_marginStart="@dimen/grid_16"
+            android:layout_marginTop="@dimen/grid_4"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listEvents"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/grid_0"
+            android:layout_marginTop="@dimen/grid_16"
+            android:layout_marginHorizontal="@dimen/grid_16"
+            app:layout_constraintTop_toBottomOf="@id/labelEventHeader"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
