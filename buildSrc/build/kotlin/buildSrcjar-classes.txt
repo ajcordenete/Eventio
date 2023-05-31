@@ -1,0 +1,1 @@
+D:\AndroidProjects\Eventio\buildSrc\build\classes\kotlin\main\Android.class;D:\AndroidProjects\Eventio\buildSrc\build\classes\kotlin\main\Libs.class;D:\AndroidProjects\Eventio\buildSrc\build\classes\kotlin\main\Versions.class

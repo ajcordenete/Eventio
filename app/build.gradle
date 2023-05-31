@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-android'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.ajcordenete.eventio'
+    compileSdk Android.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.ajcordenete.eventio"
+        minSdk Android.minSdkVersion
+        targetSdk Android.targetSdkVersion
+        versionCode Android.versionCode
+        versionName Android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(":data")
+    implementation project(':core')
+
+    implementation Libs.splashScreen
+
+    testImplementation Libs.junit
+    androidTestImplementation Libs.androidxTestJunit
+    androidTestImplementation Libs.espressoCore
+
+    //Hilt
+    implementation Libs.hiltAndroid
+    kapt Libs.hiltCompiler
+
+    // Kotlin
+    implementation Libs.navigationFragmentKtx
+    implementation Libs.navigationUiKtx
+
+    // Feature module Support
+    implementation Libs.navigationDynamicFeaturesFragment
+
+    // Testing Navigation
+    androidTestImplementation Libs.navigationTesting
+
+    // Jetpack Compose Integration
+    implementation Libs.navigationCompose
+
+    // Coroutines
+    implementation Libs.coroutinesCore
+    implementation Libs.coroutinesAndroid
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
