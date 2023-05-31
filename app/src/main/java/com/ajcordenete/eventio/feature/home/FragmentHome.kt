@@ -9,6 +9,7 @@ import com.ajcordenete.core.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.ajcordenete.core.ext.navigate
 import com.ajcordenete.core.ext.ninjaTap
 import com.ajcordenete.eventio.feature.list.adapter.EventsAdapter
 import com.ajcordenete.eventio.utils.ViewUtils
@@ -46,7 +47,10 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
         binding
             .imgDashboard
             .ninjaTap {
-                //TODO: Add navigation to Action page here
+                navigate(
+                    FragmentHomeDirections
+                        .actionFragmentHomeToFragmentAction()
+                )
             }
             .launchIn(lifecycleScope)
 

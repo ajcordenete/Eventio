@@ -51,18 +51,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun recordEvent() {
-        viewModelScope.launch(dispatchers.io()) {
-            eventRepository.saveEvent(
-                Event(
-                    uid = UUID.randomUUID().toString(),
-                    name = "Button 1 pressed",
-                    timestampMillis = System.currentTimeMillis()
-                )
-            )
-        }
-    }
-
     //Only show the latest 3 records so we don't crowd the dashboard..
     private fun processLatestEvents(events: List<Event>): List<Event> {
         return events.sortedBy {
