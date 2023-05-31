@@ -2,7 +2,7 @@
     <string name="app_name">Eventio</string>
 
     <!-- Dashboard -->
-    <string name="total_events">%2$d total events</string>
+    <string name="total_events">%1$d total events</string>
     <string name="tap_to_record_an_event">Tap to record an event</string>
     <string name="your_events">Your events</string>
 </resources>
