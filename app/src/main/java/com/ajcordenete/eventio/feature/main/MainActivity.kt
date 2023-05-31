@@ -1,4 +1,4 @@
-package com.ajcordenete.eventio.main
+package com.ajcordenete.eventio.feature.main
 
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen

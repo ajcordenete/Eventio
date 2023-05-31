@@ -1,4 +1,4 @@
-package com.ajcordenete.eventio.home
+package com.ajcordenete.eventio.feature.home
 
 import android.os.Bundle
 import androidx.lifecycle.viewModelScope
@@ -30,10 +30,18 @@ class HomeViewModel @Inject constructor(
             val result = eventRepository.getEvents()
 
             if(result.isSuccess) {
+                val events = result.get()
+
                 _uiState
                     .emit(
-                        HomeUIState.ShowEvents(result.get())
+                        HomeUIState.ShowEvents(processLatestEvents(events))
                     )
+
+                _uiState
+                    .emit(
+                        HomeUIState.ShowEventsCount(events.count())
+                    )
+
             } else {
                 _uiState
                     .emit(
@@ -53,5 +61,13 @@ class HomeViewModel @Inject constructor(
                 )
             )
         }
+    }
+
+    //Only show the latest 3 records so we don't crowd the dashboard..
+    private fun processLatestEvents(events: List<Event>): List<Event> {
+        return events.sortedBy {
+            it.timestampMillis
+        }.asReversed()
+            .take(3)
     }
 }

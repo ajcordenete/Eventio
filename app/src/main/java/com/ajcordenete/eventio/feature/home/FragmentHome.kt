@@ -1,4 +1,4 @@
-package com.ajcordenete.eventio.home
+package com.ajcordenete.eventio.feature.home
 
 import android.os.Bundle
 import android.view.View
@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.ajcordenete.core.ext.ninjaTap
+import com.ajcordenete.eventio.feature.list.adapter.EventsAdapter
 import com.ajcordenete.eventio.utils.ViewUtils
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
@@ -18,6 +19,10 @@ import kotlinx.coroutines.launch
 class FragmentHome: BaseFragment<FragmentHomeBinding>() {
 
     private val viewModel by viewModels<HomeViewModel>()
+
+    private val eventAdapter by lazy {
+        EventsAdapter()
+    }
 
     override fun getLayoutId(): Int = R.layout.fragment_home
 
@@ -41,9 +46,13 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
         binding
             .imgDashboard
             .ninjaTap {
-                viewModel.recordEvent()
+                //TODO: Add navigation to Action page here
             }
             .launchIn(lifecycleScope)
+
+        binding
+            .listEvents
+            .adapter = eventAdapter
     }
 
     private fun setUpVmObserver() {
@@ -57,9 +66,12 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
     private fun handleState(state: HomeUIState) {
         when(state) {
             is HomeUIState.ShowEvents -> {
+                eventAdapter.updateItems(state.events, true)
+            }
+            is HomeUIState.ShowEventsCount -> {
                 binding.txtEventCount.text = getString(
                     R.string.total_events,
-                    state.events.count()
+                    state.count
                 )
             }
             is HomeUIState.ShowLoading -> {
