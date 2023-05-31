@@ -6,7 +6,7 @@ import com.ajcordenete.persistence.features.event.models.EventDB
 fun Event.asEntity(): EventDB {
     this.apply {
         return EventDB(
-            id = id,
+            uid = uid,
             name = name,
             timestampMillis = timestampMillis
         )
@@ -16,7 +16,7 @@ fun Event.asEntity(): EventDB {
 fun EventDB.asDomain(): Event {
     this.apply {
         return Event(
-            id = id,
+            uid = uid,
             name = name.orEmpty(),
             timestampMillis = timestampMillis ?: 0L
         )

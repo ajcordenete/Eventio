@@ -8,6 +8,11 @@ import com.ajcordenete.eventio.databinding.FragmentHomeBinding
 import com.ajcordenete.core.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.ajcordenete.core.ext.ninjaTap
+import com.ajcordenete.eventio.utils.ViewUtils
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FragmentHome: BaseFragment<FragmentHomeBinding>() {
@@ -19,6 +24,10 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolbar()
+        setUpViews()
+        setUpVmObserver()
+
+        viewModel.getEvents()
     }
 
     private fun setUpToolbar() {
@@ -26,5 +35,45 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
             binding.toolbar.toolbarView,
             getString(commonR.string.home)
         )
+    }
+
+    private fun setUpViews() {
+        binding
+            .imgDashboard
+            .ninjaTap {
+                viewModel.recordEvent()
+            }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun setUpVmObserver() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel
+                .uiState
+                .collect(::handleState)
+        }
+    }
+
+    private fun handleState(state: HomeUIState) {
+        when(state) {
+            is HomeUIState.ShowEvents -> {
+                binding.txtEventCount.text = getString(
+                    R.string.total_events,
+                    state.events.count()
+                )
+            }
+            is HomeUIState.ShowLoading -> {
+
+            }
+            is HomeUIState.ShowCacheLoading -> {
+
+            }
+            is HomeUIState.ShowError -> {
+                ViewUtils.showGenericErrorSnackBar(
+                    binding.root,
+                    state.errorMessage
+                )
+            }
+        }
     }
 }
