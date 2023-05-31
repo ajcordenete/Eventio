@@ -5,21 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ajcordenete.persistence.features.event.dao.EventDao
-import com.ajcordenete.persistence.features.user.dao.UserDao
-import com.ajcordenete.persistence.features.user.models.UserDB
+import com.ajcordenete.persistence.features.event.models.EventDB
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 
 @Database(
     entities = [
-        UserDB::class
+        EventDB::class
     ],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase: RoomDatabase() {
-
-    abstract fun userDao(): UserDao
 
     abstract fun eventDao(): EventDao
 
