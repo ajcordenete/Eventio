@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Button
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.ajcordenete.core.base.BaseViewModelFragment
+import com.ajcordenete.core.base.BaseFragment
 import com.ajcordenete.core.ext.ninjaTap
 import com.ajcordenete.eventio.R
 import com.ajcordenete.eventio.databinding.FragmentActionBinding
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ActionFragment: BaseViewModelFragment<FragmentActionBinding, ActionViewModel>() {
+class ActionFragment: BaseFragment<FragmentActionBinding>() {
 
     private val viewModel by viewModels<ActionViewModel>()
 
@@ -34,28 +34,28 @@ class ActionFragment: BaseViewModelFragment<FragmentActionBinding, ActionViewMod
         binding
             .button1
             .ninjaTap {
-                viewModel.recordEvent(getButtonName(it as Button))
+                viewModel.recordEvent(getButtonName(it as Button), System.currentTimeMillis())
             }
             .launchIn(lifecycleScope)
 
         binding
             .button2
             .ninjaTap {
-                viewModel.recordEvent(getButtonName(it as Button))
+                viewModel.recordEvent(getButtonName(it as Button), System.currentTimeMillis())
             }
             .launchIn(lifecycleScope)
 
         binding
             .button3
             .ninjaTap {
-                viewModel.recordEvent(getButtonName(it as Button))
+                viewModel.recordEvent(getButtonName(it as Button), System.currentTimeMillis())
             }
             .launchIn(lifecycleScope)
 
         binding
             .button4
             .ninjaTap {
-                viewModel.recordEvent(getButtonName(it as Button))
+                viewModel.recordEvent(getButtonName(it as Button), System.currentTimeMillis())
             }
             .launchIn(lifecycleScope)
     }
