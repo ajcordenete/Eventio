@@ -39,6 +39,13 @@ class HomeViewModel @Inject constructor(
                         .emit(
                             HomeUIState.ShowEventsCount(events.count())
                         )
+
+                    if(events.isEmpty()) {
+                        _uiState
+                            .emit(
+                                HomeUIState.ShowEmptyLayout
+                            )
+                    }
                 } else {
                     _uiState
                         .emit(

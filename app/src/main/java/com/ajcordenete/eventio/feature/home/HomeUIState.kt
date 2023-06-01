@@ -8,9 +8,7 @@ sealed class HomeUIState {
 
     data class ShowEventsCount(val count: Int): HomeUIState()
 
-    object ShowCacheLoading : HomeUIState()
-
-    object ShowLoading : HomeUIState()
+    object ShowEmptyLayout: HomeUIState()
 
     data class ShowError(val errorMessage: String): HomeUIState()
 }

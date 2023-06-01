@@ -9,8 +9,10 @@ import com.ajcordenete.core.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.ajcordenete.core.ext.invisible
 import com.ajcordenete.core.ext.navigate
 import com.ajcordenete.core.ext.ninjaTap
+import com.ajcordenete.core.ext.visible
 import com.ajcordenete.eventio.feature.list.adapter.EventsAdapter
 import com.ajcordenete.eventio.utils.ViewUtils
 import kotlinx.coroutines.flow.launchIn
@@ -55,6 +57,16 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
             .launchIn(lifecycleScope)
 
         binding
+            .layoutEmptyList
+            .ninjaTap {
+                navigate(
+                    FragmentHomeDirections
+                        .actionFragmentHomeToFragmentAction()
+                )
+            }
+            .launchIn(lifecycleScope)
+
+        binding
             .labelViewAll
             .ninjaTap {
                 navigate(
@@ -88,11 +100,9 @@ class FragmentHome: BaseFragment<FragmentHomeBinding>() {
                     state.count
                 )
             }
-            is HomeUIState.ShowLoading -> {
-
-            }
-            is HomeUIState.ShowCacheLoading -> {
-
+            is HomeUIState.ShowEmptyLayout -> {
+                binding.layoutEmptyList.visible()
+                binding.labelViewAll.invisible()
             }
             is HomeUIState.ShowError -> {
                 ViewUtils.showGenericErrorSnackBar(
