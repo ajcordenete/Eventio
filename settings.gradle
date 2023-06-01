@@ -16,6 +16,5 @@ rootProject.name = "Eventio"
 include ':app'
 include ':persistence'
 include ':domain'
-include ':network'
 include ':data'
 include ':core'

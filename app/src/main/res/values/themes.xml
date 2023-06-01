@@ -5,7 +5,7 @@
         <item name="windowSplashScreenBackground">@color/colorPrimaryFull</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
         <item name="windowSplashScreenAnimationDuration">300</item>
-        <item name="postSplashScreenTheme">@style/Theme.BaseKit</item>
+        <item name="postSplashScreenTheme">@style/Theme.BaseKit.Eventio</item>
 
         <!-- Status bar and Nav bar configs -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/colorPrimaryFull</item>
