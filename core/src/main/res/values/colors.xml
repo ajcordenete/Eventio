@@ -9,9 +9,9 @@
     <color name="cerulean_blue">#2C66D5</color>
 
     <!-- Define Theming colors here-->
-    <color name="colorPrimaryFull">#1062FF</color>
-    <color name="colorPrimaryShade1">#9DBCF7</color>
-    <color name="colorPrimaryShade2">#F4F7FD</color>
+    <color name="colorPrimaryFull">#CA3433</color>
+    <color name="colorPrimaryShade1">#FF5858</color>
+    <color name="colorPrimaryShade2">#FF908B</color>
     <color name="colorSecondaryFull">#5A489B</color>
     <color name="colorAlertWarning">#FFD20C</color>
     <color name="colorAlertSuccess">#72D62A</color>

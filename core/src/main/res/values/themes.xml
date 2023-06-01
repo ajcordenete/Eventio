@@ -5,7 +5,7 @@
         <!-- region System UI -->
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">?attr/colorPrimaryFull</item>
+        <item name="android:statusBarColor">?attr/colorBackground</item>
         <item name="android:windowBackground">@drawable/window_background</item>
         <!-- endregion -->
 
@@ -36,5 +36,9 @@
         <item name="materialAlertDialogTheme">@style/Styles.Dialog.Alert</item>
         <item name="android:textColor">?attr/colorOnLightRegular</item>
         <!-- endregion -->
+    </style>
+
+    <style name="Theme.BaseKit.Eventio" parent="Theme.BaseKit">
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
