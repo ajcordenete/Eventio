@@ -13,4 +13,6 @@
     <!-- Action Page -->
     <string name="select_an_event">Select an event</string>
     <string name="event_saved">Event successfully saved</string>
+    <string name="no_events_yet">No events yet</string>
+    <string name="record_your_first_event">Record your first event</string>
 </resources>

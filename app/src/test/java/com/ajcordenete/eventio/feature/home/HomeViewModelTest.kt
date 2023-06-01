@@ -1,6 +1,7 @@
 package com.ajcordenete.eventio.feature.home
 
 import com.ajcordenete.data.feature.event.EventRepository
+import com.ajcordenete.domain.models.Event
 import com.ajcordenete.domain.utils.whenever
 import com.ajcordenete.eventio.Stubs
 import com.ajcordenete.eventio.core.BaseViewModelTest
@@ -43,6 +44,27 @@ class HomeViewModelTest: BaseViewModelTest() {
 
             Assert.assertEquals(expectedState1, expectItem())
             Assert.assertEquals(expectedState2, expectItem())
+        }
+    }
+
+    @Test
+    fun getEvents_shouldEmitShowEmptyLayout_whenSuccessAndNoEvents() = scope.runTest {
+        val events = listOf<Event>()
+        val count = 0
+
+        val expectedState1 = HomeUIState.ShowEvents(events)
+        val expectedState2 = HomeUIState.ShowEventsCount(count)
+        val expectedState3 = HomeUIState.ShowEmptyLayout
+        val result = Result.success(events)
+
+        whenever(repository.getEvents()).thenReturn(result)
+
+        subject.uiState.testSharedFlow {
+            subject.getEvents()
+
+            Assert.assertEquals(expectedState1, expectItem())
+            Assert.assertEquals(expectedState2, expectItem())
+            Assert.assertEquals(expectedState3, expectItem())
         }
     }
 
