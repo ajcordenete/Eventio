@@ -6,9 +6,9 @@
 
 A native Android application that saves button events and displays all record of said events.
 <br/><br/>
-<img src="https://github.com/ajcordenete/Eventio/blob/config/readme/img/screenshot_home.png" width="250">&nbsp; 
-<img src="https://github.com/ajcordenete/Eventio/blob/config/readme/img/screenshot_list_page.png" width="250">&nbsp;
-<img src="https://github.com/ajcordenete/Eventio/blob/config/readme/img/screenshot_action_page.png" width="250">&nbsp;
+<img src="https://github.com/ajcordenete/Eventio/blob/master/img/screenshot_home.png" width="250">&nbsp; 
+<img src="https://github.com/ajcordenete/Eventio/blob/master/img/screenshot_list_page.png" width="250">&nbsp;
+<img src="https://github.com/ajcordenete/Eventio/blob/master/img/screenshot_action_page.png" width="250">&nbsp;
 
 ### [Basekit]((https://developer.android.com/topic/libraries/architecture/room))
 The app is generated from my own android-basekit which is my starter template for creating new Android projects and contains necessary boilerplate codes. More information about it in the repo:
@@ -38,7 +38,7 @@ The app is generated from my own android-basekit which is my starter template fo
  - Minimalist design approach
  - With support for Dark theme
  <br/><br/>
- <img src="https://github.com/ajcordenete/Eventio/blob/config/readme/img/screenshot_home_dark.png" width="250">&nbsp; 
+ <img src="https://github.com/ajcordenete/Eventio/blob/master/img/screenshot_home_dark.png" width="250">&nbsp; 
 
 ## Tests
 - Unit test are implemented for view models and repository
