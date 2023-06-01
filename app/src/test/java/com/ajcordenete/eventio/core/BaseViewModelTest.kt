@@ -17,7 +17,7 @@ open class BaseViewModelTest {
     @get:Rule
     val executor = InstantTaskExecutorRule()
 
-    val dispatcher = StandardTestDispatcher()
+    private val dispatcher = StandardTestDispatcher()
 
     val scope = TestScope(dispatcher)
 

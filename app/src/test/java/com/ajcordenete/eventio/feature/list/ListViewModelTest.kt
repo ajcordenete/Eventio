@@ -1,6 +1,7 @@
 package com.ajcordenete.eventio.feature.list
 
 import com.ajcordenete.data.feature.event.EventRepository
+import com.ajcordenete.domain.utils.whenever
 import com.ajcordenete.eventio.Stubs
 import com.ajcordenete.eventio.core.BaseViewModelTest
 import com.ajcordenete.eventio.core.testSharedFlow
@@ -34,7 +35,7 @@ class ListViewModelTest: BaseViewModelTest() {
         val expectedState = ListUIState.ShowEvents(expectedSortedEvents)
         val result = Result.success(events)
 
-        `when`(repository.getEvents()).thenReturn(result)
+        whenever(repository.getEvents()).thenReturn(result)
 
         subject.uiState.testSharedFlow {
             subject.getEvents()

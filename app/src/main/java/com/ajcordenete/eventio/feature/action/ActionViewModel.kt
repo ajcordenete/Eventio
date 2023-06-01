@@ -25,14 +25,15 @@ class ActionViewModel @Inject constructor(
     override fun isFirstTimeUiCreate(bundle: Bundle?) {}
 
     fun recordEvent(
-        name: String
+        name: String,
+        timestamp: Long
     ) {
         launch(
             action = {
                 eventRepository.saveEvent(
                     Event(
                         name = name,
-                        timestampMillis = System.currentTimeMillis()
+                        timestampMillis = timestamp
                     )
                 )
                 _uiState.emit(ActionUIState.EventSaved)

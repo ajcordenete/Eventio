@@ -26,29 +26,33 @@ class HomeViewModel @Inject constructor(
     override fun isFirstTimeUiCreate(bundle: Bundle?) {}
 
     fun getEvents() {
-        viewModelScope.launch {
-            val result = eventRepository.getEvents()
-
-            if(result.isSuccess) {
-                val events = result.get()
-
+        launch(
+            action = {
+                val result = eventRepository.getEvents()
+                if(result.isSuccess) {
+                    val events = result.get()
+                    _uiState
+                        .emit(
+                            HomeUIState.ShowEvents(processLatestEvents(events))
+                        )
+                    _uiState
+                        .emit(
+                            HomeUIState.ShowEventsCount(events.count())
+                        )
+                } else {
+                    _uiState
+                        .emit(
+                            HomeUIState.ShowError(result.exceptionOrNull()?.message.orEmpty())
+                        )
+                }
+            },
+            onError = {
                 _uiState
                     .emit(
-                        HomeUIState.ShowEvents(processLatestEvents(events))
-                    )
-
-                _uiState
-                    .emit(
-                        HomeUIState.ShowEventsCount(events.count())
-                    )
-
-            } else {
-                _uiState
-                    .emit(
-                        HomeUIState.ShowError(result.exceptionOrNull()?.message.orEmpty())
+                        HomeUIState.ShowError(it.message.orEmpty())
                     )
             }
-        }
+        )
     }
 
     //Only show the latest 3 records so we don't crowd the dashboard..
