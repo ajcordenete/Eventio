@@ -24,11 +24,18 @@ class ListViewModel @Inject constructor(
     fun getEvents() {
         viewModelScope.launch {
             val result = eventRepository.getEvents()
+            val events = result.get()
+
 
             if(result.isSuccess) {
                 _uiState
                     .emit(
-                        ListUIState.ShowEvents(result.get())
+                        ListUIState
+                            .ShowEvents(
+                                events
+                                    .sortedBy { it.timestampMillis }
+                                    .asReversed()
+                            )
                     )
 
             } else {
