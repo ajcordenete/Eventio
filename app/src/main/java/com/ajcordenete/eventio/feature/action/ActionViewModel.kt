@@ -40,7 +40,7 @@ class ActionViewModel @Inject constructor(
             onError = {
                 _uiState.emit(ActionUIState.ShowError(it.message.toString()))
             },
-            dispatcher = DispatcherProvider.io()
+            dispatcher = dispatchers.io()
         )
     }
 }
